@@ -1,0 +1,5 @@
+.vagrant/
+src/*
+!src/.gitkeep
+data/*
+!data/.gitkeep
