@@ -1,0 +1,16 @@
+web:
+  image:'hongbinfu/nginx:1.9.9'
+  ports:
+  	  - '80:80'
+  links:
+  	  - php
+  volumes:
+      - ../src:/www
+      - ./vhost:/etc/nginx/vhost
+php:
+  image:"hongbinfu/php:7.0.1"
+  ports:
+  	  - '19000:9000'
+  volumes:
+      - ../src:/www
+      - ./php_conf:/usr/local/etc/php/conf.d
