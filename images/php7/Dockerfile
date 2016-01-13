@@ -16,6 +16,12 @@ RUN unzip redis.zip \
     && rm -r redis.zip \
     && mv phpredis-php7 /usr/src/php/ext/redis \
     && docker-php-ext-install redis
-
-COPY php.ini /usr/local/etc/php/conf.d/custom-setting.ini
+# Install xdebug
+RUN curl -L -o xdebug-2.4.0rc3.tgz http://xdebug.org/files/xdebug-2.4.0rc3.tgz \
+    && tar -zvxf xdebug-2.4.0rc3.tgz \
+    && rm -r xdebug-2.4.0rc3.tgz \
+    && mv xdebug-2.4.0RC3 /usr/src/php/ext/xdebug \
+    && docker-php-ext-configure xdebug --disable-xdebug \
+    && docker-php-ext-install xdebug
+COPY php.ini /usr/local/etc/php/conf.d/init-setting.ini
 CMD ["php-fpm"]

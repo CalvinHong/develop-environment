@@ -1,16 +1,25 @@
-web:
-  image:'hongbinfu/nginx:1.9.9'
+nginx:
+  restart: always
+#  image: 'hongbinfu/nginx:1.9.9'
+  image: "999e2e3d1713"
   ports:
-  	  - '80:80'
+      - '80:80'
   links:
-  	  - php
+      - phpfpm
   volumes:
       - ../src:/www
       - ./vhost:/etc/nginx/vhost
-php:
-  image:"hongbinfu/php:7.0.1"
+phpfpm:
+  restart: always
+#  image: 'hongbinfu/php:7.0.1'
+  image: "17fcce414f6b"
+  expose:
+      - '9000'
+      - '9001'
   ports:
-  	  - '19000:9000'
+      - '19000:9000'
+      - '19001:9001'
   volumes:
       - ../src:/www
-      - ./php_conf:/usr/local/etc/php/conf.d
+      - ./php.ini:/usr/local/etc/php/conf.d/custom.ini
+      - ./xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
