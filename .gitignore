@@ -2,5 +2,11 @@
 .idea/
 src/*
 !src/.gitkeep
-data/*
-!data/.gitkeep
+develop_environment/data/*
+!develop_environment/data/.gitkeep
+develop_environment/logs/mysql/*
+!develop_environment/logs/mysql/.gitkeep
+develop_environment/logs/php/*
+!develop_environment/logs/php/.gitkeep
+develop_environment/logs/nginx/*
+!develop_environment/logs/nginx/.gitkeep
