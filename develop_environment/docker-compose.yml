@@ -1,8 +1,6 @@
 nginx:
   restart: always
-#  image: 'hongbinfu/nginx:1.9.9'
-  image: "999e2e3d1713"
-#  build: ../images/nginx/1.9.9/Dockerfile
+  image: 'hongbinfu/nginx:1.9.9'
   ports:
       - '80:80'
   links:
@@ -16,9 +14,7 @@ nginx:
       - ./nginx.conf:/etc/nginx/nginx.conf
 phpfpm:
   restart: always
-#  image: 'hongbinfu/php:7.0.1'
-#  image: "881c88981f94"
-#  build: ../images/php/7.0.1/Dockerfile
+  image: 'hongbinfu/php:5.6.17'
   image: "8ce3bc7c0d9e"
   ports:
       - '9000:9000'
