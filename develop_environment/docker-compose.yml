@@ -51,3 +51,8 @@ redis:
   volumes:
       - /etc/localtime:/etc/localtime
       - ./data/redis:/data
+mongo:
+  restart: always
+  image: "mongo"
+  volumes:
+      - ./data/mongo:/data      
