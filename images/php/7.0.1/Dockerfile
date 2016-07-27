@@ -26,4 +26,5 @@ RUN curl -L -o xdebug-2.4.0rc3.tgz http://xdebug.org/files/xdebug-2.4.0rc3.tgz \
 RUN cd /usr/src/php/ext/mysqli \
     && docker-php-ext-configure mysqli --with-mysqli=mysqlnd \
     && docker-php-ext-install mysqli
+    && docker-php-ext-install pdo_mysql
 CMD ["php-fpm"]
