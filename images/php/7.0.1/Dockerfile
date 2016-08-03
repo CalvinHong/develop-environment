@@ -7,9 +7,10 @@ RUN apt-get update && apt-get install -y \
         libpng12-dev \
         zip \
         unzip \
-    && docker-php-ext-install iconv mcrypt mbstring \
+    && docker-php-ext-install iconv mcrypt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install gd \
+    && docker-php-ext-install mbstring
 # Install php-redis
 RUN curl -L -o redis.zip https://codeload.github.com/phpredis/phpredis/zip/php7
 RUN unzip redis.zip \
@@ -27,9 +28,5 @@ RUN cd /usr/src/php/ext/mysqli \
     && docker-php-ext-configure mysqli --with-mysqli=mysqlnd \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql
-RUN cd ~/ \ 
-    && curl -sS https://getcomposer.org/installer | php \ 
-    && mv composer.phar /usr/local/bin/composer    
-RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
     
 CMD ["php-fpm"]
