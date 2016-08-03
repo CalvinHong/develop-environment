@@ -36,5 +36,7 @@ RUN cd /usr/src/php/ext/mysqli \
 #composer神器
 RUN curl -sS https://getcomposer.org/installer \
   | php -- --install-dir=/usr/local/bin --filename=composer    
+
+RUN composer config -g repo.packagist composer https://packagist.phpcomposer.com
   
 CMD ["php-fpm"]
