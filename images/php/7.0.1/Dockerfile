@@ -27,4 +27,7 @@ RUN cd /usr/src/php/ext/mysqli \
     && docker-php-ext-configure mysqli --with-mysqli=mysqlnd \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql
+RUN curl -sS https://getcomposer.org/installer | php \
+RUN mv composer.phar /usr/local/bin/composer    
+    
 CMD ["php-fpm"]
